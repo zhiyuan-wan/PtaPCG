@@ -1,0 +1,76 @@
+<project name="Run Extension" default="run">
+	<target name="run">
+		
+		<record name="C:/hypta_build_log.txt" action="start"/>
+
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="antlr"/> 
+		</antcall>
+		
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="bloat"/>
+		</antcall>
+		
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="chart"/>
+		</antcall>
+
+		<antcall target="extension">
+		    <param name="benchmark" value="hsqldb"/>
+		</antcall>
+
+		<antcall target="extension">
+		    <param name="benchmark" value="luindex"/>
+		</antcall>
+
+		<antcall target="extension">
+		    <param name="benchmark" value="lusearch"/>
+		</antcall>
+
+		<antcall target="extension">
+		    <param name="benchmark" value="pmd"/>
+		</antcall>
+
+		<antcall target="extension">
+		    <param name="benchmark" value="xalan"/>
+		</antcall>
+	
+		<antcall target="extension">
+		    <param name="benchmark" value="compress"/>
+		</antcall>
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="db"/>
+		</antcall>
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="jack"/>
+		</antcall>
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="javac"/>
+		</antcall>
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="jess"/>
+		</antcall>
+		
+		<antcall target="extension">
+		    <param name="benchmark" value="raytrace"/>
+		</antcall>
+	
+		<record name="C:/hypta_build_log.txt" action="stop"/>
+	</target>
+	
+    <target name="extension">
+        <java classname="cn.zju.cs.wzy.experiment.Main" maxmemory="800m" fork="true">
+         <arg value="${benchmark}"/>
+         <classpath>
+          <pathelement location="PtaPCG.jar"/>
+         </classpath>
+       </java>
+    </target>
+</project>
